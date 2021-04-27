@@ -1,13 +1,11 @@
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Shows4all.App.Data.Context;
 
 namespace Shows4all.App
 {
@@ -23,6 +21,8 @@ namespace Shows4all.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var connectionString = Configuration.GetConnectionString("Shows4AllConnection");
+            services.AddDbContext<Shows4AllDbContext>(options => options.UseSqlServer(connectionString));
             services.AddRazorPages();
         }
 
