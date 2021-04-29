@@ -5,23 +5,18 @@ using System.Threading.Tasks;
 
 namespace Shows4all.App.Data.Entities
 {
-    public class Admin : User
+    public class Admin
+
     {
+        public int Id { get; set; }
 
-        public Admin() 
-        {
-        }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
 
-        protected Admin (int id, string firstname, string lastname, string email) : base( id, firstname, lastname, email)
-        {
-            Id = id;
-            FirstName = firstname;
-            LastName = lastname;
-            Email = email;
-        }
+     
+        public string Email { get; set; }
 
-
-
+       
 
 
     }

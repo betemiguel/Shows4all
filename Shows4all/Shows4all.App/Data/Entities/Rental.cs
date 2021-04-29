@@ -10,14 +10,15 @@ namespace Shows4all.App.Data.Entities
     {
         public int Id { get; set; }
 
-        public Customer Costumer { get; set; }
-        [ForeignKey("Costumer")]
-        public int IdUser { get; set; }
+        public double TotalPrice { get; set; }
+
+        public DateTime DateRented { get; set; }
+
 
         public Serie Serie { get; set; }
         [ForeignKey("Serie")]
         public int IdSerie { get; set; }
 
-        public DateTime DateRented { get; set; }
+        
     }
 }
