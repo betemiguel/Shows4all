@@ -483,4 +483,9 @@ C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pag
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Actors\Details.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Actors\Edit.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Actors\Index.cshtml.g.cs
-C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\User\_AdminLayout.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\_Layout.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Create.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Delete.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Details.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Edit.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Index.cshtml.g.cs
