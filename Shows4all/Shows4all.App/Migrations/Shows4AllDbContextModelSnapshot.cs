@@ -100,15 +100,10 @@ namespace Shows4all.App.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdRental")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdRental");
 
                     b.ToTable("Customers");
                 });
@@ -125,9 +120,6 @@ namespace Shows4all.App.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
@@ -181,9 +173,6 @@ namespace Shows4all.App.Migrations
                     b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdSerie")
-                        .HasColumnType("int");
-
                     b.Property<int>("NumEpisodes")
                         .HasColumnType("int");
 
@@ -193,8 +182,6 @@ namespace Shows4all.App.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GenreId");
-
-                    b.HasIndex("IdSerie");
 
                     b.ToTable("PricesSeries");
                 });
@@ -209,6 +196,9 @@ namespace Shows4all.App.Migrations
                     b.Property<DateTime>("DateRented")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("IdCostumer")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdSerie")
                         .HasColumnType("int");
 
@@ -217,9 +207,11 @@ namespace Shows4all.App.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdCostumer");
+
                     b.HasIndex("IdSerie");
 
-                    b.ToTable("Rental");
+                    b.ToTable("Rentals");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Season", b =>
@@ -231,6 +223,9 @@ namespace Shows4all.App.Migrations
 
                     b.Property<int>("IdEpisode")
                         .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
 
                     b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
@@ -249,10 +244,7 @@ namespace Shows4all.App.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("GenreId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdAdmin")
+                    b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
                     b.Property<int>("IdSeason")
@@ -271,8 +263,6 @@ namespace Shows4all.App.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.HasIndex("IdAdmin");
-
                     b.HasIndex("IdSeason");
 
                     b.ToTable("Series");
@@ -287,17 +277,6 @@ namespace Shows4all.App.Migrations
                         .IsRequired();
 
                     b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("Shows4all.App.Data.Entities.Customer", b =>
-                {
-                    b.HasOne("Shows4all.App.Data.Entities.Rental", "Rental")
-                        .WithMany()
-                        .HasForeignKey("IdRental")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Rental");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Participate", b =>
@@ -325,24 +304,24 @@ namespace Shows4all.App.Migrations
                         .WithMany()
                         .HasForeignKey("GenreId");
 
-                    b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
-                        .WithMany()
-                        .HasForeignKey("IdSerie")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Genre");
-
-                    b.Navigation("Serie");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Rental", b =>
                 {
+                    b.HasOne("Shows4all.App.Data.Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("IdCostumer")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
                         .WithMany()
                         .HasForeignKey("IdSerie")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Serie");
                 });
@@ -362,23 +341,13 @@ namespace Shows4all.App.Migrations
                 {
                     b.HasOne("Shows4all.App.Data.Entities.Genre", "Genre")
                         .WithMany()
-                        .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Shows4all.App.Data.Entities.Admin", "Admin")
-                        .WithMany()
-                        .HasForeignKey("IdAdmin")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("GenreId");
 
                     b.HasOne("Shows4all.App.Data.Entities.Season", "Season")
                         .WithMany()
                         .HasForeignKey("IdSeason")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Admin");
 
                     b.Navigation("Genre");
 

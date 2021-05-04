@@ -14,9 +14,8 @@ namespace Shows4all.App.Data.Entities
 
         public int EpisodeNumber { get; set; }
 
-        public double Price { get; set; }
-
-
        
+
+
     }
 }

@@ -12,6 +12,8 @@ namespace Shows4all.App.Data.Entities
 
         public int SeasonNumber { get; set; }
 
+        public double Price { get; set; }
+
         public Episode Episode { get; set; }
         [ForeignKey("Episode")]
         public int IdEpisode { get; set; }

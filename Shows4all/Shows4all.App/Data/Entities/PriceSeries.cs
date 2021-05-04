@@ -18,9 +18,9 @@ namespace Shows4all.App.Data.Entities
 
         public Genre Genre { get; set; }
 
-        public Serie Serie { get; set; }
-        [ForeignKey("Serie")]
-        public int IdSerie { get; set; }
+        //public Serie Serie { get; set; }
+        //[ForeignKey("Serie")]
+        //public int IdSerie { get; set; }
 
     }
 }

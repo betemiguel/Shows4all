@@ -20,6 +20,9 @@ namespace Shows4all.App.Data.Context
         public DbSet<PriceSeries> PricesSeries { get; set; }
         public DbSet<Serie> Series { get; set; }
         public DbSet<Participate> Participates { get; set; }
+        public DbSet<Rental> Rentals { get; set; }
+        public DbSet<Shows4all.App.Data.Entities.Season> Season { get; set; }
+        public DbSet<Shows4all.App.Data.Entities.Genre> Genre { get; set; }
 
 
     }
