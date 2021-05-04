@@ -489,3 +489,4 @@ C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pag
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Details.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Edit.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Episodes\Index.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\User\_UserLayout.cshtml.g.cs
