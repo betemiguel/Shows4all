@@ -499,3 +499,8 @@ C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pag
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Details.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Edit.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Index.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Seasons\Create.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Seasons\Delete.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Seasons\Details.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Seasons\Edit.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Seasons\Index.cshtml.g.cs
