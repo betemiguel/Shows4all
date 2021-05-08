@@ -55,7 +55,7 @@ namespace Shows4all.App.Pages
                     };
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                    return RedirectToPage("/User/index");
+                    return RedirectToPage("/User/Index");
                 }
             }
 

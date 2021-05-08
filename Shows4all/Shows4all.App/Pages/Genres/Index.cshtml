@@ -1,11 +1,11 @@
 ﻿@page
-@model Shows4all.App.Pages.Actors.IndexModel
+@model Shows4all.App.Pages.Genres.IndexModel
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Edit Actor</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,13 +14,13 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Actor[0].Name)
+                @Html.DisplayNameFor(model => model.Genre[0].Name)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Actor) {
+@foreach (var item in Model.Genre) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
