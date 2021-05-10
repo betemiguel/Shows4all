@@ -10,7 +10,7 @@ namespace Shows4all.App.Data.Entities
     {
 
         public int Id { get; set; }
-       
+
 
         public double Price { get; set; }
 
@@ -21,6 +21,7 @@ namespace Shows4all.App.Data.Entities
         public Serie Serie { get; set; }
         [ForeignKey("Serie")]
         public int IdSerie { get; set; }
-        
+
     }
 }
+

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Shows4all.App.Migrations
 {
-    public partial class MigInitial : Migration
+    public partial class MigAddPricesList : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -134,7 +134,6 @@ namespace Shows4all.App.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SeasonNumber = table.Column<int>(type: "int", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
                     IdEpisode = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -149,6 +148,57 @@ namespace Shows4all.App.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Serie",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    GenreId = table.Column<int>(type: "int", nullable: true),
+                    IdSeason = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Serie", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Serie_Genre_GenreId",
+                        column: x => x.GenreId,
+                        principalTable: "Genre",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Serie_Season_IdSeason",
+                        column: x => x.IdSeason,
+                        principalTable: "Season",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Comments",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PublishedDAte = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Rating = table.Column<int>(type: "int", nullable: false),
+                    IdSerie = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Serie_IdSerie",
+                        column: x => x.IdSerie,
+                        principalTable: "Serie",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PricesSeries",
                 columns: table => new
                 {
@@ -156,7 +206,8 @@ namespace Shows4all.App.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Price = table.Column<double>(type: "float", nullable: false),
                     NumEpisodes = table.Column<int>(type: "int", nullable: false),
-                    GenreId = table.Column<int>(type: "int", nullable: true)
+                    GenreId = table.Column<int>(type: "int", nullable: true),
+                    IdSerie = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -167,33 +218,10 @@ namespace Shows4all.App.Migrations
                         principalTable: "Genre",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Series",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Rating = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    GenreId = table.Column<int>(type: "int", nullable: true),
-                    IdSeason = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Series", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Series_Genre_GenreId",
-                        column: x => x.GenreId,
-                        principalTable: "Genre",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Series_Season_IdSeason",
-                        column: x => x.IdSeason,
-                        principalTable: "Season",
+                        name: "FK_PricesSeries_Serie_IdSerie",
+                        column: x => x.IdSerie,
+                        principalTable: "Serie",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -219,12 +247,17 @@ namespace Shows4all.App.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Rentals_Series_IdSerie",
+                        name: "FK_Rentals_Serie_IdSerie",
                         column: x => x.IdSerie,
-                        principalTable: "Series",
+                        principalTable: "Serie",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_IdSerie",
+                table: "Comments",
+                column: "IdSerie");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CreditCardsPayment_IdCustomer",
@@ -247,6 +280,11 @@ namespace Shows4all.App.Migrations
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PricesSeries_IdSerie",
+                table: "PricesSeries",
+                column: "IdSerie");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Rentals_IdCostumer",
                 table: "Rentals",
                 column: "IdCostumer");
@@ -262,13 +300,13 @@ namespace Shows4all.App.Migrations
                 column: "IdEpisode");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Series_GenreId",
-                table: "Series",
+                name: "IX_Serie_GenreId",
+                table: "Serie",
                 column: "GenreId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Series_IdSeason",
-                table: "Series",
+                name: "IX_Serie_IdSeason",
+                table: "Serie",
                 column: "IdSeason");
         }
 
@@ -276,6 +314,9 @@ namespace Shows4all.App.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Admins");
+
+            migrationBuilder.DropTable(
+                name: "Comments");
 
             migrationBuilder.DropTable(
                 name: "CreditCardsPayment");
@@ -296,7 +337,7 @@ namespace Shows4all.App.Migrations
                 name: "Customers");
 
             migrationBuilder.DropTable(
-                name: "Series");
+                name: "Serie");
 
             migrationBuilder.DropTable(
                 name: "Genre");

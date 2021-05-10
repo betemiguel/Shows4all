@@ -199,6 +199,9 @@ namespace Shows4all.App.Migrations
                     b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
+                    b.Property<int>("IdSerie")
+                        .HasColumnType("int");
+
                     b.Property<int>("NumEpisodes")
                         .HasColumnType("int");
 
@@ -208,6 +211,8 @@ namespace Shows4all.App.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("GenreId");
+
+                    b.HasIndex("IdSerie");
 
                     b.ToTable("PricesSeries");
                 });
@@ -338,7 +343,15 @@ namespace Shows4all.App.Migrations
                         .WithMany()
                         .HasForeignKey("GenreId");
 
+                    b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
+                        .WithMany()
+                        .HasForeignKey("IdSerie")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Genre");
+
+                    b.Navigation("Serie");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Rental", b =>
