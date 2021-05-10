@@ -29,7 +29,7 @@ namespace Shows4all.App.Pages.Series
                 return NotFound();
             }
 
-            Serie = await _context.Series
+            Serie = await _context.Serie
                 .Include(s => s.Season).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Serie == null)
@@ -46,11 +46,11 @@ namespace Shows4all.App.Pages.Series
                 return NotFound();
             }
 
-            Serie = await _context.Series.FindAsync(id);
+            Serie = await _context.Serie.FindAsync(id);
 
             if (Serie != null)
             {
-                _context.Series.Remove(Serie);
+                _context.Serie.Remove(Serie);
                 await _context.SaveChangesAsync();
             }
 

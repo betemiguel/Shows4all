@@ -55,6 +55,32 @@ namespace Shows4all.App.Migrations
                     b.ToTable("Admins");
                 });
 
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Comments")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdSerie")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PublishedDAte")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Rating")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IdSerie");
+
+                    b.ToTable("Comments");
+                });
+
             modelBuilder.Entity("Shows4all.App.Data.Entities.CreditCardPayment", b =>
                 {
                     b.Property<int>("Id")
@@ -224,9 +250,6 @@ namespace Shows4all.App.Migrations
                     b.Property<int>("IdEpisode")
                         .HasColumnType("int");
 
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
                     b.Property<int>("SeasonNumber")
                         .HasColumnType("int");
 
@@ -244,6 +267,9 @@ namespace Shows4all.App.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("GenreId")
                         .HasColumnType("int");
 
@@ -253,10 +279,7 @@ namespace Shows4all.App.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Rating")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("ReleaseDate")
+                    b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -265,7 +288,18 @@ namespace Shows4all.App.Migrations
 
                     b.HasIndex("IdSeason");
 
-                    b.ToTable("Series");
+                    b.ToTable("Serie");
+                });
+
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Comment", b =>
+                {
+                    b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
+                        .WithMany("Comments")
+                        .HasForeignKey("IdSerie")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Serie");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.CreditCardPayment", b =>
@@ -352,6 +386,11 @@ namespace Shows4all.App.Migrations
                     b.Navigation("Genre");
 
                     b.Navigation("Season");
+                });
+
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Serie", b =>
+                {
+                    b.Navigation("Comments");
                 });
 #pragma warning restore 612, 618
         }

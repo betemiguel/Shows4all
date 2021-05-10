@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,12 +11,13 @@ namespace Shows4all.App.Data.Entities
 
         public string Name { get; set; }
 
-        public string Rating { get; set; }
+        public string Description { get; set; }
 
   
-        public DateTime ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
         public Genre Genre { get; set; }
 
+        public ICollection<Comment> Comments { get; set; }
         
         public Season Season { get; set; }
         [ForeignKey("Season")]

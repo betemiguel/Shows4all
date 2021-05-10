@@ -22,5 +22,6 @@ namespace Shows4all.App.Data.Entities
         public Customer Customer { get; set; }
         [ForeignKey("Customer")]
         public int IdCostumer { get; set; }
+
     }
 }

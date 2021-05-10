@@ -36,7 +36,7 @@ namespace Shows4all.App.Pages.Series
                 return Page();
             }
 
-            _context.Series.Add(Serie);
+            _context.Serie.Add(Serie);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

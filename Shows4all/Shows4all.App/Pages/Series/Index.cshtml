@@ -5,7 +5,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Create Series</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -17,7 +17,7 @@
                 @Html.DisplayNameFor(model => model.Serie[0].Name)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Serie[0].Rating)
+                @Html.DisplayNameFor(model => model.Serie[0].Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Serie[0].ReleaseDate)
@@ -29,26 +29,35 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Serie) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReleaseDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Season.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Serie)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReleaseDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Season.Id)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<h1>Create Sasons</h1>
+
+<p><a href="/Seasons/index">Seasons</a></p>
+
+<h1>Create Episodes</h1>
+
+<p><a href="/Episodes/index">Episodes</a></p>

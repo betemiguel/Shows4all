@@ -17,11 +17,9 @@
                 @Html.DisplayNameFor(model => model.Season[0].SeasonNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Season[0].Price)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Season[0].Episode)
             </th>
+          
             <th></th>
         </tr>
     </thead>
@@ -32,11 +30,9 @@
                 @Html.DisplayFor(modelItem => item.SeasonNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Episode.Id)
             </td>
+   
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |

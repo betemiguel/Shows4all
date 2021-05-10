@@ -23,7 +23,7 @@ namespace Shows4all.App.Pages.Series
 
         public async Task OnGetAsync()
         {
-            Serie = await _context.Series
+            Serie = await _context.Serie
                 .Include(s => s.Season).ToListAsync();
         }
     }

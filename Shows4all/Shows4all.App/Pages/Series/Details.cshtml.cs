@@ -28,7 +28,7 @@ namespace Shows4all.App.Pages.Series
                 return NotFound();
             }
 
-            Serie = await _context.Series
+            Serie = await _context.Serie
                 .Include(s => s.Season).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Serie == null)
