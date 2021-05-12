@@ -1,5 +1,5 @@
 ﻿@page
-@model Shows4all.App.Pages.Rentals.IndexModel
+@model Shows4all.App.Pages.CreditCards.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -14,31 +14,37 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Rental[0].TotalPrice)
+                @Html.DisplayNameFor(model => model.CreditCardPayment[0].CardName)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rental[0].DateRented)
+                @Html.DisplayNameFor(model => model.CreditCardPayment[0].Number)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rental[0].Serie)
+                @Html.DisplayNameFor(model => model.CreditCardPayment[0].CVV)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Rental[0].Customer)
+                @Html.DisplayNameFor(model => model.CreditCardPayment[0].ExpDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreditCardPayment[0].Customer)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Rental) {
+@foreach (var item in Model.CreditCardPayment) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalPrice)
+                @Html.DisplayFor(modelItem => item.CardName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DateRented)
+                @Html.DisplayFor(modelItem => item.Number)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Serie.Id)
+                @Html.DisplayFor(modelItem => item.CVV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpDate)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Customer.Id)

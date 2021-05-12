@@ -19,9 +19,7 @@ namespace Shows4all.App.Data.Entities
 
         public ICollection<Comment> Comments { get; set; }
         
-        public Season Season { get; set; }
-        [ForeignKey("Season")]
-        public int IdSeason { get; set; }
+     
 
        
 

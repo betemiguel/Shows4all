@@ -12,10 +12,10 @@ namespace Shows4all.App.Data.Entities
 
         public int SeasonNumber { get; set; }
 
-      
 
-        public Episode Episode { get; set; }
-        [ForeignKey("Episode")]
-        public int IdEpisode { get; set; }
+
+        public Serie Serie { get; set; }
+        [ForeignKey("Serie")]
+        public int IdSerie { get; set; }
     }
 }

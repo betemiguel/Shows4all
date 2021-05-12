@@ -14,7 +14,9 @@ namespace Shows4all.App.Data.Entities
 
         public int EpisodeNumber { get; set; }
 
-       
+        public Season Season { get; set; }
+        [ForeignKey("Season")]
+        public int IdSeason { get; set; }
 
 
     }
