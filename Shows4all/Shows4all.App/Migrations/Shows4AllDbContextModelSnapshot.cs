@@ -194,32 +194,26 @@ namespace Shows4all.App.Migrations
                     b.ToTable("Participates");
                 });
 
-            modelBuilder.Entity("Shows4all.App.Data.Entities.PriceSeries", b =>
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Payment", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("GenreId")
+                    b.Property<int>("IdCrediCardPayment")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdSerie")
+                    b.Property<int>("IdRental")
                         .HasColumnType("int");
-
-                    b.Property<int>("NumEpisodes")
-                        .HasColumnType("int");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId");
+                    b.HasIndex("IdCrediCardPayment");
 
-                    b.HasIndex("IdSerie");
+                    b.HasIndex("IdRental");
 
-                    b.ToTable("PricesSeries");
+                    b.ToTable("Payment");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Rental", b =>
@@ -232,20 +226,12 @@ namespace Shows4all.App.Migrations
                     b.Property<DateTime>("DateRented")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IdCostumer")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IdSeries")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("SerieId")
+                    b.Property<int>("IdSerie")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCostumer");
-
-                    b.HasIndex("SerieId");
+                    b.HasIndex("IdSerie");
 
                     b.ToTable("Rentals");
                 });
@@ -351,36 +337,32 @@ namespace Shows4all.App.Migrations
                     b.Navigation("Episode");
                 });
 
-            modelBuilder.Entity("Shows4all.App.Data.Entities.PriceSeries", b =>
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Payment", b =>
                 {
-                    b.HasOne("Shows4all.App.Data.Entities.Genre", "Genre")
+                    b.HasOne("Shows4all.App.Data.Entities.CreditCardPayment", "CrediCardPayment")
                         .WithMany()
-                        .HasForeignKey("GenreId");
+                        .HasForeignKey("IdCrediCardPayment")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
+                    b.HasOne("Shows4all.App.Data.Entities.Rental", "Rental")
+                        .WithMany()
+                        .HasForeignKey("IdRental")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CrediCardPayment");
+
+                    b.Navigation("Rental");
+                });
+
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Rental", b =>
+                {
                     b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
                         .WithMany()
                         .HasForeignKey("IdSerie")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Genre");
-
-                    b.Navigation("Serie");
-                });
-
-            modelBuilder.Entity("Shows4all.App.Data.Entities.Rental", b =>
-                {
-                    b.HasOne("Shows4all.App.Data.Entities.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("IdCostumer")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
-                        .WithMany()
-                        .HasForeignKey("SerieId");
-
-                    b.Navigation("Customer");
 
                     b.Navigation("Serie");
                 });

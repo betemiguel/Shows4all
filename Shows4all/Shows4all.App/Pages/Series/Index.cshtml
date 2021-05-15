@@ -20,6 +20,9 @@
                 @Html.DisplayNameFor(model => model.Serie[0].Description)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Serie[0].Price)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Serie[0].ReleaseDate)
             </th>
             <th></th>
@@ -36,6 +39,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
                     @Html.DisplayFor(modelItem => item.ReleaseDate)
                 </td>
                 <td>
@@ -48,6 +54,7 @@
     </tbody>
 </table>
 
+
 <h2>Create Seasons</h2>
 
 <p><a href="/Seasons/index">Seasons</a></p>
@@ -59,5 +66,8 @@
 
 <div>
     <p><a href="/User/index">Back to menu</a></p>
-    
+
 </div>
+
+
+

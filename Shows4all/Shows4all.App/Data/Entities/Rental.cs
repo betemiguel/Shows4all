@@ -12,20 +12,17 @@ namespace Shows4all.App.Data.Entities
 
         public DateTime DateRented { get; set; }
 
-        public Customer Customer { get; set; }
-        [ForeignKey("Customer")]
-        public int IdCostumer { get; set; }
 
         public Serie Serie { get; set; }
-        [ForeignKey("Series")]
-        public int IdSeries { get; set; }
-
+        [ForeignKey("Serie")]
+        public int IdSerie { get; set; }
 
         public double Total()
-
         {
             return Serie.Price;
+
         }
+
 
     }
 }
