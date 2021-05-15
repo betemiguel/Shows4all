@@ -1,4 +1,5 @@
-﻿namespace Shows4all.App.Data.Entities
+﻿
+namespace Shows4all.App.Data.Entities
 {
     public class Actor
     {
@@ -6,9 +7,6 @@
 
         public string Name { get; set; }
 
-       
-
-
-
+      
     }
 }

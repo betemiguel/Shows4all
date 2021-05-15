@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shows4all.App.Data.Context;
 
 namespace Shows4all.App.Migrations
 {
     [DbContext(typeof(Shows4AllDbContext))]
-    partial class Shows4AllDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210515154608_Mig.Add total to Prices to Rental")]
+    partial class MigAddtotaltoPricestoRental
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

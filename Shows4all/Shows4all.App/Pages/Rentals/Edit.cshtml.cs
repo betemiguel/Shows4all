@@ -32,14 +32,14 @@ namespace Shows4all.App.Pages.Rentals
 
             Rental = await _context.Rentals
                 .Include(r => r.Customer)
-                .Include(r => r.Serie).FirstOrDefaultAsync(m => m.Id == id);
+                .Include(r => r.PriceSeries).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Rental == null)
             {
                 return NotFound();
             }
            ViewData["IdCostumer"] = new SelectList(_context.Customers, "Id", "Id");
-           ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
+           ViewData["IdPriceSeries"] = new SelectList(_context.PricesSeries, "Id", "Id");
             return Page();
         }
 

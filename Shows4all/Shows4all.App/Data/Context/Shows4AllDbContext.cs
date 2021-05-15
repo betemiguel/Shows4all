@@ -21,9 +21,9 @@ namespace Shows4all.App.Data.Context
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Participate> Participates { get; set; }
         public DbSet<Rental> Rentals { get; set; }
-        public DbSet<Shows4all.App.Data.Entities.Season> Season { get; set; }
-        public DbSet<Shows4all.App.Data.Entities.Genre> Genre { get; set; }
-        public DbSet<Shows4all.App.Data.Entities.Serie> Serie { get; set; }
+        public DbSet<Season> Season { get; set; }
+        public DbSet<Genre> Genre { get; set; }
+        public DbSet<Serie> Serie { get; set; }
        
 
 

@@ -15,24 +15,19 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Rental.Id" />
             <div class="form-group">
-                <label asp-for="Rental.TotalPrice" class="control-label"></label>
-                <input asp-for="Rental.TotalPrice" class="form-control" />
-                <span asp-validation-for="Rental.TotalPrice" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Rental.DateRented" class="control-label"></label>
                 <input asp-for="Rental.DateRented" class="form-control" />
                 <span asp-validation-for="Rental.DateRented" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Rental.IdSerie" class="control-label"></label>
-                <select asp-for="Rental.IdSerie" class="form-control" asp-items="ViewBag.IdSerie"></select>
-                <span asp-validation-for="Rental.IdSerie" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="Rental.IdCostumer" class="control-label"></label>
                 <select asp-for="Rental.IdCostumer" class="form-control" asp-items="ViewBag.IdCostumer"></select>
                 <span asp-validation-for="Rental.IdCostumer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rental.IdPriceSeries" class="control-label"></label>
+                <select asp-for="Rental.IdPriceSeries" class="form-control" asp-items="ViewBag.IdPriceSeries"></select>
+                <span asp-validation-for="Rental.IdPriceSeries" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

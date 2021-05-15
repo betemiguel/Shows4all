@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
+
 namespace Shows4all.App.Data.Entities
 {
     public class Episode

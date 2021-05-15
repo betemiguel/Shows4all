@@ -21,7 +21,7 @@ namespace Shows4all.App.Pages.Prices
 
         public IActionResult OnGet()
         {
-        ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
+        ViewData["Serie"] = new SelectList(_context.Serie, "Id", "Name", "Price");
             return Page();
         }
 

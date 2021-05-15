@@ -21,8 +21,9 @@ namespace Shows4all.App.Pages.Rentals
 
         public IActionResult OnGet()
         {
-        ViewData["IdCostumer"] = new SelectList(_context.Customers, "Id", "Id");
-        ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
+        ViewData["Costumer"] = new SelectList(_context.Customers, "Id", "Name");
+        ViewData["PriceSeries"] = new SelectList(_context.PricesSeries, "Id", "Name");
+        ViewData["Price"] = new SelectList(_context.PricesSeries, "Price");
             return Page();
         }
 

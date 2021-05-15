@@ -13,6 +13,8 @@ namespace Shows4all.App.Data.Entities
 
         public string Description { get; set; }
 
+        public double Price { get; set; }
+
   
         public DateTime? ReleaseDate { get; set; }
         public Genre Genre { get; set; }

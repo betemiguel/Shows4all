@@ -3,20 +3,22 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shows4all.App.Data.Context;
 
 namespace Shows4all.App.Migrations
 {
     [DbContext(typeof(Shows4AllDbContext))]
-    partial class Shows4AllDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210515152458_Mig.Add Rental")]
+    partial class MigAddRental
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.5")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Actor", b =>
@@ -235,14 +237,20 @@ namespace Shows4all.App.Migrations
                     b.Property<int>("IdCostumer")
                         .HasColumnType("int");
 
-                    b.Property<int>("IdPriceSeries")
+                    b.Property<int>("IdSerie")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<int>("Quantity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("IdCostumer");
 
-                    b.HasIndex("IdPriceSeries");
+                    b.HasIndex("IdSerie");
 
                     b.ToTable("Rentals");
                 });
@@ -282,9 +290,6 @@ namespace Shows4all.App.Migrations
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
 
                     b.Property<DateTime?>("ReleaseDate")
                         .HasColumnType("datetime2");
@@ -373,15 +378,15 @@ namespace Shows4all.App.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Shows4all.App.Data.Entities.PriceSeries", "PriceSeries")
+                    b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
                         .WithMany()
-                        .HasForeignKey("IdPriceSeries")
+                        .HasForeignKey("IdSerie")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
 
-                    b.Navigation("PriceSeries");
+                    b.Navigation("Serie");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Season", b =>

@@ -25,7 +25,7 @@ namespace Shows4all.App.Pages.Rentals
         {
             Rental = await _context.Rentals
                 .Include(r => r.Customer)
-                .Include(r => r.Serie).ToListAsync();
+                .Include(r => r.PriceSeries).ToListAsync();
         }
     }
 }
