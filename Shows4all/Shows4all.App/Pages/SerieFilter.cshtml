@@ -1,0 +1,41 @@
+﻿@page
+@model Shows4all.App.Pages.FilterSeriesModel
+@{
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="SerieFilter" class="control-label"></label>
+                <input asp-for="SerieFilter" class="form-control" />
+                <span asp-validation-for="SerieFilter" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Filter" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="ViewSeries/index">Back to List</a>
+</div>
+
+<hr />
+
+
+
+@if (Model.Series != null)
+{
+    <ul>
+
+        @foreach (var serie in Model.Series)
+        {
+            <li>
+                @serie.Name  - @serie.Id
+            </li>
+        }
+    </ul>
+}

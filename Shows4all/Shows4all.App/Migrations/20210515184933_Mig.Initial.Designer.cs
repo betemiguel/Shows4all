@@ -10,8 +10,8 @@ using Shows4all.App.Data.Context;
 namespace Shows4all.App.Migrations
 {
     [DbContext(typeof(Shows4AllDbContext))]
-    [Migration("20210515165501_Mig.Add Rentals and payments to pages")]
-    partial class MigAddRentalsandpaymentstopages
+    [Migration("20210515184933_Mig.Initial")]
+    partial class MigInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -81,6 +81,21 @@ namespace Shows4all.App.Migrations
                     b.HasIndex("IdSerie");
 
                     b.ToTable("Comments");
+                });
+
+            modelBuilder.Entity("Shows4all.App.Data.Entities.Country", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Country");
                 });
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.CreditCardPayment", b =>
@@ -268,7 +283,10 @@ namespace Shows4all.App.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("GenreId")
+                    b.Property<int>("IdCountry")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdGenre")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -282,7 +300,9 @@ namespace Shows4all.App.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GenreId");
+                    b.HasIndex("IdCountry");
+
+                    b.HasIndex("IdGenre");
 
                     b.ToTable("Serie");
                 });
@@ -382,9 +402,19 @@ namespace Shows4all.App.Migrations
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Serie", b =>
                 {
+                    b.HasOne("Shows4all.App.Data.Entities.Country", "Country")
+                        .WithMany()
+                        .HasForeignKey("IdCountry")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Shows4all.App.Data.Entities.Genre", "Genre")
                         .WithMany()
-                        .HasForeignKey("GenreId");
+                        .HasForeignKey("IdGenre")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Country");
 
                     b.Navigation("Genre");
                 });

@@ -36,6 +36,19 @@ namespace Shows4all.App.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Country",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Country", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Customers",
                 columns: table => new
                 {
@@ -97,17 +110,24 @@ namespace Shows4all.App.Migrations
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Price = table.Column<double>(type: "float", nullable: false),
                     ReleaseDate = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    GenreId = table.Column<int>(type: "int", nullable: true)
+                    IdGenre = table.Column<int>(type: "int", nullable: false),
+                    IdCountry = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Serie", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Serie_Genre_GenreId",
-                        column: x => x.GenreId,
+                        name: "FK_Serie_Country_IdCountry",
+                        column: x => x.IdCountry,
+                        principalTable: "Country",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Serie_Genre_IdGenre",
+                        column: x => x.IdGenre,
                         principalTable: "Genre",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -291,9 +311,14 @@ namespace Shows4all.App.Migrations
                 column: "IdSerie");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Serie_GenreId",
+                name: "IX_Serie_IdCountry",
                 table: "Serie",
-                column: "GenreId");
+                column: "IdCountry");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Serie_IdGenre",
+                table: "Serie",
+                column: "IdGenre");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -330,6 +355,9 @@ namespace Shows4all.App.Migrations
 
             migrationBuilder.DropTable(
                 name: "Serie");
+
+            migrationBuilder.DropTable(
+                name: "Country");
 
             migrationBuilder.DropTable(
                 name: "Genre");

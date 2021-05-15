@@ -17,7 +17,14 @@ namespace Shows4all.App.Data.Entities
 
   
         public DateTime? ReleaseDate { get; set; }
+
         public Genre Genre { get; set; }
+        [ForeignKey("Genre")]
+        public int IdGenre { get; set; }
+
+        public Country Country { get; set; }
+        [ForeignKey("Country")]
+        public int IdCountry { get; set; }
 
         public ICollection<Comment> Comments { get; set; }
         
