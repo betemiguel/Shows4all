@@ -530,8 +530,3 @@ C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pag
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Participates\Details.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Participates\Edit.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Participates\Index.cshtml.g.cs
-C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Create.cshtml.g.cs
-C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Delete.cshtml.g.cs
-C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Details.cshtml.g.cs
-C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Edit.cshtml.g.cs
-C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Rentals\Index.cshtml.g.cs

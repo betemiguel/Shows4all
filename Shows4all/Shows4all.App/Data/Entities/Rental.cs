@@ -16,15 +16,15 @@ namespace Shows4all.App.Data.Entities
         [ForeignKey("Customer")]
         public int IdCostumer { get; set; }
 
-        public PriceSeries PriceSeries { get; set; }
-        [ForeignKey("PriceSeries")]
-        public int IdPriceSeries { get; set; }
+        public Serie Serie { get; set; }
+        [ForeignKey("Series")]
+        public int IdSeries { get; set; }
 
 
         public double Total()
 
         {
-            return PriceSeries.Price;
+            return Serie.Price;
         }
 
     }
