@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yN27OLYZDBtrr888QUAzvNBojGhJuhk7T+xC44ZMQPWc03UUMDoZpVrV90TlwkxmGFppTqS+6q5+nHxYH6aFFg==",
+  "dgSpecHash": "Zz0aVUnyN7Yjc3A6xZXkZzSQhtJ17hv0bhj6ssf1bDQ77Ew4IDnXJ2yWwogzr0NLpe98g4D5DXmM49twwIbJeA==",
   "success": true,
   "projectFilePath": "C:\\temp\\repositorio\\Shows4all\\Shows4all\\Shows4all.App\\Shows4all.App.csproj",
   "expectedPackageFiles": [
@@ -26,7 +26,7 @@
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.authentication.core\\2.2.0\\microsoft.aspnetcore.authentication.core.2.2.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
-    "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\5.0.5\\microsoft.aspnetcore.connections.abstractions.5.0.5.nupkg.sha512",
+    "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\5.0.6\\microsoft.aspnetcore.connections.abstractions.5.0.6.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.0.0\\microsoft.aspnetcore.cors.2.0.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\2.2.0\\microsoft.aspnetcore.cryptography.internal.2.2.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\2.2.0\\microsoft.aspnetcore.cryptography.keyderivation.2.2.0.nupkg.sha512",
@@ -38,9 +38,9 @@
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http\\2.2.0\\microsoft.aspnetcore.http.2.2.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http.abstractions\\2.2.0\\microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512",
-    "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\5.0.5\\microsoft.aspnetcore.http.connections.common.5.0.5.nupkg.sha512",
+    "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http.connections.common\\5.0.6\\microsoft.aspnetcore.http.connections.common.5.0.6.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http.extensions\\2.2.0\\microsoft.aspnetcore.http.extensions.2.2.0.nupkg.sha512",
-    "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.5\\microsoft.aspnetcore.http.features.5.0.5.nupkg.sha512",
+    "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.http.features\\5.0.6\\microsoft.aspnetcore.http.features.5.0.6.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.identity\\2.2.0\\microsoft.aspnetcore.identity.2.2.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\2.0.0\\microsoft.aspnetcore.jsonpatch.2.0.0.nupkg.sha512",
     "C:\\Users\\35193\\.nuget\\packages\\microsoft.aspnetcore.localization\\2.0.0\\microsoft.aspnetcore.localization.2.0.0.nupkg.sha512",
