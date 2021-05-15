@@ -7,32 +7,24 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
-using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Shows4all.App.Pages.ViewSeries
+namespace Shows4all.App.Pages.CreditCards
 {
-    public class IndexModelClient : PageModel
+    public class IndexModel : PageModel
     {
         private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
 
-        public IndexModelClient(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public IndexModel(Shows4all.App.Data.Context.Shows4AllDbContext context)
         {
             _context = context;
         }
 
-     
-
-
-        public IList<Serie> Serie { get; set; }
-
+        public IList<CreditCardPayment> CreditCardPayment { get;set; }
 
         public async Task OnGetAsync()
         {
-
-
-            Serie = await _context.Serie.ToListAsync();
+            CreditCardPayment = await _context.CreditCardsPayment
+                .Include(c => c.Customer).ToListAsync();
         }
     }
 }
-    
-

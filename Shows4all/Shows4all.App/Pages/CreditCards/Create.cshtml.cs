@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
 
-namespace Shows4all.App.Pages.Payments
+namespace Shows4all.App.Pages.CreditCards
 {
     public class CreateModel : PageModel
     {
@@ -21,13 +21,12 @@ namespace Shows4all.App.Pages.Payments
 
         public IActionResult OnGet()
         {
-        ViewData["CrediCardPayment"] = new SelectList(_context.CreditCardsPayment, "Id", "Name");
-        ViewData["Rental"] = new SelectList(_context.Rentals, "Id", "Price");
+        ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public Payment Payment { get; set; }
+        public CreditCardPayment CreditCardPayment { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +36,7 @@ namespace Shows4all.App.Pages.Payments
                 return Page();
             }
 
-            _context.Payment.Add(Payment);
+            _context.CreditCardsPayment.Add(CreditCardPayment);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

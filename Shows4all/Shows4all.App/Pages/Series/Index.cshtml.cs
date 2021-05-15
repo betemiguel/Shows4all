@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
 
+
 namespace Shows4all.App.Pages.Series
 {
     public class IndexModel : PageModel
@@ -20,9 +21,11 @@ namespace Shows4all.App.Pages.Series
         }
 
         public IList<Serie> Serie { get;set; }
-
+       
+       
         public async Task OnGetAsync()
         {
+            
             Serie = await _context.Serie.ToListAsync();
         }
     }

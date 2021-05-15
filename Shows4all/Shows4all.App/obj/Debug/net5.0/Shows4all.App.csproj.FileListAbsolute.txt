@@ -530,3 +530,8 @@ C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pag
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Series\Details.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Series\Edit.cshtml.g.cs
 C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\Series\Index.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\CreditCards\Create.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\CreditCards\Delete.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\CreditCards\Details.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\CreditCards\Edit.cshtml.g.cs
+C:\temp\repositorio\Shows4all\Shows4all\Shows4all.App\obj\Debug\net5.0\Razor\Pages\CreditCards\Index.cshtml.g.cs
