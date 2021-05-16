@@ -29,6 +29,7 @@ namespace Shows4all.App.Pages.Comments
             }
 
             Comment = await _context.Comments
+                .Include(c => c.Customer)
                 .Include(c => c.Serie).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Comment == null)

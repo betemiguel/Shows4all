@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
+using Shows4all.App.Data.Repositories;
 
 namespace Shows4all.App.Pages.Actors
 {
     public class CreateModel : PageModel
     {
-        private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
+        
+        private readonly ActorRepository _actorRepository;
 
-        public CreateModel(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public CreateModel( ActorRepository actorRepository)
         {
-            _context = context;
+           
+           _actorRepository = actorRepository;
         }
 
         public IActionResult OnGet()
@@ -35,8 +34,8 @@ namespace Shows4all.App.Pages.Actors
                 return Page();
             }
 
-            _context.Actors.Add(Actor);
-            await _context.SaveChangesAsync();
+            var actor = await _actorRepository.AddActorAsync(Actor);
+           
 
             return RedirectToPage("./Index");
         }

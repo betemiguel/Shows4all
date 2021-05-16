@@ -17,6 +17,8 @@ namespace Shows4all.App.Data.Entities
         [ForeignKey("Serie")]
         public int IdSerie { get; set; }
 
-
+        public Customer Customer{ get; set; }
+        [ForeignKey("Customer")]
+        public int IdCustomer { get; set; }
     }
 }

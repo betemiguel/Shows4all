@@ -24,6 +24,7 @@ namespace Shows4all.App.Pages.Comments
         public async Task OnGetAsync()
         {
             Comment = await _context.Comments
+                .Include(c => c.Customer)
                 .Include(c => c.Serie).ToListAsync();
         }
     }

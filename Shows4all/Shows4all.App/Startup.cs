@@ -9,6 +9,7 @@ using Shows4all.App.Data.Context;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Shows4all.App.Data.Repositories;
 
 namespace Shows4all.App
 {
@@ -26,6 +27,15 @@ namespace Shows4all.App
         {
             var connectionString = Configuration.GetConnectionString("Shows4AllConnection");
             services.AddDbContext<Shows4AllDbContext>(options => options.UseSqlServer(connectionString));
+
+            //NOta: ao aplicar os serviços Scoped e Singleton dá erro no Main - Login
+            // services.AddScoped<ActorRepository>();
+            // services.AddSingleton<ActorRepository>();
+            services.AddTransient<ActorRepository>();
+            services.AddTransient<CountryRepository>();
+
+
+
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
             //Alterei aqui

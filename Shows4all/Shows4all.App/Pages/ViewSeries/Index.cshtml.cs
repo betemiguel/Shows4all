@@ -13,24 +13,53 @@ namespace Shows4all.App.Pages.ViewSeries
 {
     public class IndexModelClient : PageModel
     {
-        private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
+        private readonly Shows4AllDbContext _context;
 
-        public IndexModelClient(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public IndexModelClient(Shows4AllDbContext context)
         {
             _context = context;
         }
 
-     
 
+        public string NameSort { get; set; }
+        public string ReleaseDateSort { get; set; }
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
 
         public IList<Serie> Serie { get; set; }
 
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
+            NameSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ReleaseDateSort = sortOrder == "Date" ? "date_desc" : "Date";
 
+            CurrentFilter = searchString;
 
-            Serie = await _context.Serie.ToListAsync();
+            IQueryable<Serie> seriesName = from s in _context.Serie
+                                             select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                seriesName = seriesName.Where(s => s.Name.ToUpper().Contains(searchString.ToUpper())
+                                       || s.Description.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    seriesName = seriesName.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    seriesName = seriesName.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "date_desc":
+                    seriesName = seriesName.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                default:
+                    seriesName = seriesName.OrderBy(s => s.Name);
+                    break;
+            }
+
+            Serie = await seriesName.AsNoTracking().ToListAsync();
         }
     }
 }

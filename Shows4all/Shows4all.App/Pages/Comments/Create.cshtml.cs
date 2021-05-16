@@ -21,7 +21,8 @@ namespace Shows4all.App.Pages.Comments
 
         public IActionResult OnGet()
         {
-        ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Name");
+            ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Name");
+            ViewData["IdCostumer"] = new SelectList(_context.Serie, "Id", "Name");
             return Page();
         }
 

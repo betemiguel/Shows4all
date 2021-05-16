@@ -9,15 +9,15 @@ namespace Shows4all.App
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
-            var passwordHasher = new PasswordHasher<string>();
-            Console.WriteLine(passwordHasher.HashPassword(null, "strong password"));
-            Console.ReadLine();
+           CreateHostBuilder(args).Build().Run();
+           var passwordHasher = new PasswordHasher<string>();
+           Console.WriteLine(passwordHasher.HashPassword(null, "strong password"));
+           Console.ReadLine();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
+         Host.CreateDefaultBuilder(args)
+              .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
                 });

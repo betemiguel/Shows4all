@@ -7,16 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
+using Shows4all.App.Data.Repositories;
 
 namespace Shows4all.App.Pages.Actors
 {
     public class DeleteModel : PageModel
     {
-        private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
+        private readonly ActorRepository _actorRepository;
 
-        public DeleteModel(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public DeleteModel(ActorRepository actorRepository)
         {
-            _context = context;
+            _actorRepository = actorRepository;
         }
 
         [BindProperty]
@@ -29,7 +30,8 @@ namespace Shows4all.App.Pages.Actors
                 return NotFound();
             }
 
-            Actor = await _context.Actors.FirstOrDefaultAsync(m => m.Id == id);
+            //Actor = await _context.Actors.FirstOrDefaultAsync(m => m.Id == id);
+            Actor = await _actorRepository.GetAsync(id.Value);
 
             if (Actor == null)
             {
@@ -40,19 +42,21 @@ namespace Shows4all.App.Pages.Actors
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
+           
             if (id == null)
             {
                 return NotFound();
             }
 
-            Actor = await _context.Actors.FindAsync(id);
+            //Actor = await _context.Actors.FindAsync(id);
 
-            if (Actor != null)
-            {
-                _context.Actors.Remove(Actor);
-                await _context.SaveChangesAsync();
-            }
+            //if (Actor != null)
+            //{
+            //    _context.Actors.Remove(Actor);
+            //    await _context.SaveChangesAsync();
+            //}
 
+            _ = await _actorRepository.DeleteActorAsync(id.Value);
             return RedirectToPage("./Index");
         }
     }

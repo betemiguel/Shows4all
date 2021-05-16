@@ -31,12 +31,14 @@ namespace Shows4all.App.Pages.Comments
             }
 
             Comment = await _context.Comments
+                .Include(c => c.Customer)
                 .Include(c => c.Serie).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Comment == null)
             {
                 return NotFound();
             }
+           ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "Id");
            ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
             return Page();
         }

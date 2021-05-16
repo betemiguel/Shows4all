@@ -24,8 +24,7 @@ namespace Shows4all.App.Data.Context
         public DbSet<Genre> Genre { get; set; }
         public DbSet<Serie> Serie { get; set; }
         public DbSet<Shows4all.App.Data.Entities.Payment> Payment { get; set; }
-       
-
-
+        public DbSet<Shows4all.App.Data.Entities.Country> Country { get; set; }
+        public object Countries { get; internal set; }
     }
 }
