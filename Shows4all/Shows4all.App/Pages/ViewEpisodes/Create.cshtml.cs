@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
 
-namespace Shows4all.App.Pages.com
+namespace Shows4all.App.Pages.ViewEpisodes
 {
     public class CreateModel : PageModel
     {
@@ -21,13 +21,12 @@ namespace Shows4all.App.Pages.com
 
         public IActionResult OnGet()
         {
-        ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "Id");
-        ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
+        ViewData["IdSeason"] = new SelectList(_context.Season, "Id", "Id");
             return Page();
         }
 
         [BindProperty]
-        public Comment Comment { get; set; }
+        public Episode Episode { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
@@ -37,7 +36,7 @@ namespace Shows4all.App.Pages.com
                 return Page();
             }
 
-            _context.Comments.Add(Comment);
+            _context.Episodes.Add(Episode);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

@@ -21,7 +21,7 @@ namespace Shows4all.App.Pages.CreditCards
 
         public IActionResult OnGet()
         {
-        ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "Id");
+        ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "FirstName");
             return Page();
         }
 

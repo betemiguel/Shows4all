@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
 
-namespace Shows4all.App.Pages.com
+namespace Shows4all.App.Pages.ViewEpisodes
 {
     public class EditModel : PageModel
     {
@@ -21,7 +21,7 @@ namespace Shows4all.App.Pages.com
         }
 
         [BindProperty]
-        public Comment Comment { get; set; }
+        public Episode Episode { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -30,16 +30,14 @@ namespace Shows4all.App.Pages.com
                 return NotFound();
             }
 
-            Comment = await _context.Comments
-                .Include(c => c.Customer)
-                .Include(c => c.Serie).FirstOrDefaultAsync(m => m.Id == id);
+            Episode = await _context.Episodes
+                .Include(e => e.Season).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Comment == null)
+            if (Episode == null)
             {
                 return NotFound();
             }
-           ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "Id");
-           ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
+           ViewData["IdSeason"] = new SelectList(_context.Season, "Id", "Id");
             return Page();
         }
 
@@ -52,7 +50,7 @@ namespace Shows4all.App.Pages.com
                 return Page();
             }
 
-            _context.Attach(Comment).State = EntityState.Modified;
+            _context.Attach(Episode).State = EntityState.Modified;
 
             try
             {
@@ -60,7 +58,7 @@ namespace Shows4all.App.Pages.com
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CommentExists(Comment.Id))
+                if (!EpisodeExists(Episode.Id))
                 {
                     return NotFound();
                 }
@@ -73,9 +71,9 @@ namespace Shows4all.App.Pages.com
             return RedirectToPage("./Index");
         }
 
-        private bool CommentExists(int id)
+        private bool EpisodeExists(int id)
         {
-            return _context.Comments.Any(e => e.Id == id);
+            return _context.Episodes.Any(e => e.Id == id);
         }
     }
 }

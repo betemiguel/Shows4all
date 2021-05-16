@@ -19,6 +19,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Participate[0].Episode)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Participate[0].Episode.IdSeason)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -26,10 +29,13 @@
 @foreach (var item in Model.Participate) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Actor.Id)
+                @Html.DisplayFor(modelItem => item.Actor.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Episode.Id)
+                @Html.DisplayFor(modelItem => item.Episode.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Episode.IdSeason)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |

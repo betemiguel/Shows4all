@@ -10,8 +10,8 @@ using Shows4all.App.Data.Context;
 namespace Shows4all.App.Migrations
 {
     [DbContext(typeof(Shows4AllDbContext))]
-    [Migration("20210516162627_Mig.Comments")]
-    partial class MigComments
+    [Migration("20210516173521_Mig.Initial")]
+    partial class MigInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

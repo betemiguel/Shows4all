@@ -2,10 +2,24 @@
 @model Shows4all.App.Pages.Comments.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Comments";
 }
 
-<h1>Index</h1>
+<h1>Comments</h1>
+
+<p>
+
+</p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,13 +28,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Comment[0].Comments)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.CommentSort">
+                    @Html.DisplayNameFor(model => model.Comment[0].Comments)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Comment[0].PublishedDAte)
-            </th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PublishedDAteSort">
+                    @Html.DisplayNameFor(model => model.Comment[0].PublishedDAte)
+                    </a>
+</th>
             <th>
-                @Html.DisplayNameFor(model => model.Comment[0].Rating)
+                <a asp-page="./Index" asp-route-sortOrder="@Model.RatingSort">
+                    @Html.DisplayNameFor(model => model.Comment[0].Rating)
+                    </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Comment[0].Serie)
@@ -32,29 +52,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Comment) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Comments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PublishedDAte)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Rating)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Serie.Id)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Id)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Comment)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PublishedDAte)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Serie.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

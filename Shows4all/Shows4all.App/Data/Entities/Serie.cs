@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Shows4all.App.Data.Entities
@@ -25,7 +24,6 @@ namespace Shows4all.App.Data.Entities
         public Country Country { get; set; }
         [ForeignKey("Country")]
         public int IdCountry { get; set; }
-
         public ICollection<Comment> Comments { get; set; }
         
      

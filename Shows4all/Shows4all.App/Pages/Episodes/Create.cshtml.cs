@@ -21,7 +21,7 @@ namespace Shows4all.App.Pages.Episodes
 
         public IActionResult OnGet()
         {
-        ViewData["IdSeason"] = new SelectList(_context.Season, "Id", "Name");
+        ViewData["IdSeason"] = new SelectList(_context.Season, "Id", "SeasonNumber");
             return Page();
         }
 

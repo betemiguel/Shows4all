@@ -30,12 +30,16 @@ namespace Shows4all.App.Pages.ViewSeries
                 return NotFound();
             }
 
-            Serie = await _context.Serie.FirstOrDefaultAsync(m => m.Id == id);
+            Serie = await _context.Serie
+                .Include(s => s.Country)
+                .Include(s => s.Genre).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Serie == null)
             {
                 return NotFound();
             }
+           ViewData["IdCountry"] = new SelectList(_context.Country, "Id", "Id");
+           ViewData["IdGenre"] = new SelectList(_context.Genre, "Id", "Id");
             return Page();
         }
 

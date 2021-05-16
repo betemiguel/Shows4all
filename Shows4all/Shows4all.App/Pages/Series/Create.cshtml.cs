@@ -22,7 +22,7 @@ namespace Shows4all.App.Pages.Series
         public IActionResult OnGet()
         {
         ViewData["IdCountry"] = new SelectList(_context.Country, "Id", "Name");
-        ViewData["IdGenre"] = new SelectList(_context.Genre,"Id", "Name");
+        ViewData["IdGenre"] = new SelectList(_context.Genre, "Id", "Name");
             return Page();
         }
 

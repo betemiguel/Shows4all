@@ -2,7 +2,7 @@
 
 namespace Shows4all.App.Migrations
 {
-    public partial class MigChangestoCustomer : Migration
+    public partial class MigPages : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

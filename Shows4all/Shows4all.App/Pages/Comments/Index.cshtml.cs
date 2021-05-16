@@ -19,11 +19,57 @@ namespace Shows4all.App.Pages.Comments
             _context = context;
         }
 
+        public string CommentSort { get; set; }
+
+        public string PublishedDAteSort { get; set; }
+
+        public string RatingSort { get; set; }
+
+        public string CurrentFilter { get; set; }
+        public string CurrentSort { get; set; }
+
+
         public IList<Comment> Comment { get;set; }
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            Comment = await _context.Comments
+            CommentSort = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            PublishedDAteSort = sortOrder == "Date" ? "date_desc" : "Date";
+            RatingSort = String.IsNullOrEmpty(sortOrder) ? "rating_desc" : "";
+           
+
+            CurrentFilter = searchString;
+
+            IQueryable<Comment> commentFilter = from s in _context.Comments
+                                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                commentFilter = commentFilter.Where(s => s.Comments.ToUpper().Contains(searchString.ToUpper()) 
+                || s.PublishedDAte.ToString().Contains(searchString)
+                || s.Rating.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    commentFilter = commentFilter.OrderByDescending(s => s.Comments);
+                    break;
+                case "Date":
+                    commentFilter = commentFilter.OrderBy(s => s.PublishedDAte);
+                    break;
+                case "date_desc":
+                    commentFilter = commentFilter.OrderByDescending(s => s.PublishedDAte);
+                    break;
+                case "rating_desc":
+                    commentFilter = commentFilter.OrderByDescending(s => s.Rating);
+                    break;
+                default:
+                    commentFilter = commentFilter.OrderBy(s => s.Comments);
+                    break;
+            }
+
+
+
+            Comment = await commentFilter.AsNoTracking()
                 .Include(c => c.Customer)
                 .Include(c => c.Serie).ToListAsync();
         }

@@ -1,15 +1,13 @@
 ﻿@page
-@model Shows4all.App.Pages.Episodes.IndexModel
+@model Shows4all.App.Pages.ViewEpisodes.IndexModel
 
 @{
-    ViewData["Title"] = "Episodes";
+    ViewData["Title"] = "Index";
 }
 
-<h1>Episode</h1>
+<h1>Episodes</h1>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -20,7 +18,7 @@
                 @Html.DisplayNameFor(model => model.Episode[0].EpisodeNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Episode[0].Season)
+                @Html.DisplayNameFor(model => model.Episode[0].Season.IdSerie)
             </th>
             <th></th>
         </tr>
@@ -35,19 +33,12 @@
                 @Html.DisplayFor(modelItem => item.EpisodeNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Season.SeasonNumber)
+                @Html.DisplayFor(modelItem => item.Season.IdSerie)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                @Html.DisplayFor(modelItem => item.Season.IdSerie)
             </td>
         </tr>
 }
     </tbody>
 </table>
-
-
-<div>
-    <p><a href="/series/index">Back to Series</a>
-</div>

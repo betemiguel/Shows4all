@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
 
-namespace Shows4all.App.Pages.com
+namespace Shows4all.App.Pages.ViewEpisodes
 {
     public class DeleteModel : PageModel
     {
@@ -20,7 +20,7 @@ namespace Shows4all.App.Pages.com
         }
 
         [BindProperty]
-        public Comment Comment { get; set; }
+        public Episode Episode { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,11 +29,10 @@ namespace Shows4all.App.Pages.com
                 return NotFound();
             }
 
-            Comment = await _context.Comments
-                .Include(c => c.Customer)
-                .Include(c => c.Serie).FirstOrDefaultAsync(m => m.Id == id);
+            Episode = await _context.Episodes
+                .Include(e => e.Season).FirstOrDefaultAsync(m => m.Id == id);
 
-            if (Comment == null)
+            if (Episode == null)
             {
                 return NotFound();
             }
@@ -47,11 +46,11 @@ namespace Shows4all.App.Pages.com
                 return NotFound();
             }
 
-            Comment = await _context.Comments.FindAsync(id);
+            Episode = await _context.Episodes.FindAsync(id);
 
-            if (Comment != null)
+            if (Episode != null)
             {
-                _context.Comments.Remove(Comment);
+                _context.Episodes.Remove(Episode);
                 await _context.SaveChangesAsync();
             }
 

@@ -2,10 +2,10 @@
 @model Shows4all.App.Pages.Seasons.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Seasons";
 }
 
-<h1>Index</h1>
+<h1>Create Seaons</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -29,7 +29,7 @@
                 @Html.DisplayFor(modelItem => item.SeasonNumber)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Serie.Id)
+                @Html.DisplayFor(modelItem => item.Serie.Name)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
@@ -40,3 +40,7 @@
 }
     </tbody>
 </table>
+
+<div>
+    <p><a href="/series/index">Back to Series</a>
+</div>

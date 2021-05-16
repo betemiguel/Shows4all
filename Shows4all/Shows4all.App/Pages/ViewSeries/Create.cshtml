@@ -24,9 +24,22 @@
                 <span asp-validation-for="Serie.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Serie.Price" class="control-label"></label>
+                <input asp-for="Serie.Price" class="form-control" />
+                <span asp-validation-for="Serie.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Serie.ReleaseDate" class="control-label"></label>
                 <input asp-for="Serie.ReleaseDate" class="form-control" />
                 <span asp-validation-for="Serie.ReleaseDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serie.IdGenre" class="control-label"></label>
+                <select asp-for="Serie.IdGenre" class ="form-control" asp-items="ViewBag.IdGenre"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serie.IdCountry" class="control-label"></label>
+                <select asp-for="Serie.IdCountry" class ="form-control" asp-items="ViewBag.IdCountry"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
 
-namespace Shows4all.App.Pages.com
+namespace Shows4all.App.Pages.ViewEpisodes
 {
     public class IndexModel : PageModel
     {
@@ -19,13 +19,12 @@ namespace Shows4all.App.Pages.com
             _context = context;
         }
 
-        public IList<Comment> Comment { get;set; }
+        public IList<Episode> Episode { get;set; }
 
         public async Task OnGetAsync()
         {
-            Comment = await _context.Comments
-                .Include(c => c.Customer)
-                .Include(c => c.Serie).ToListAsync();
+            Episode = await _context.Episodes
+                .Include(e => e.Season).ToListAsync();
         }
     }
 }

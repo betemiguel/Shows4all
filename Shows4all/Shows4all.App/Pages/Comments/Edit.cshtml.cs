@@ -38,8 +38,8 @@ namespace Shows4all.App.Pages.Comments
             {
                 return NotFound();
             }
-           ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "Id");
-           ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Id");
+           ViewData["IdCustomer"] = new SelectList(_context.Customers, "Id", "FirstName");
+           ViewData["IdSerie"] = new SelectList(_context.Serie, "Id", "Name");
             return Page();
         }
 

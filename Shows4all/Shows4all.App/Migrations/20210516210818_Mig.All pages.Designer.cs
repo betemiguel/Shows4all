@@ -10,8 +10,8 @@ using Shows4all.App.Data.Context;
 namespace Shows4all.App.Migrations
 {
     [DbContext(typeof(Shows4AllDbContext))]
-    [Migration("20210515184933_Mig.Initial")]
-    partial class MigInitial
+    [Migration("20210516210818_Mig.All pages")]
+    partial class MigAllpages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,6 +67,9 @@ namespace Shows4all.App.Migrations
                     b.Property<string>("Comments")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("IdCustomer")
+                        .HasColumnType("int");
+
                     b.Property<int>("IdSerie")
                         .HasColumnType("int");
 
@@ -77,6 +80,8 @@ namespace Shows4all.App.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdCustomer");
 
                     b.HasIndex("IdSerie");
 
@@ -309,11 +314,19 @@ namespace Shows4all.App.Migrations
 
             modelBuilder.Entity("Shows4all.App.Data.Entities.Comment", b =>
                 {
+                    b.HasOne("Shows4all.App.Data.Entities.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("IdCustomer")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Shows4all.App.Data.Entities.Serie", "Serie")
                         .WithMany("Comments")
                         .HasForeignKey("IdSerie")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Customer");
 
                     b.Navigation("Serie");
                 });

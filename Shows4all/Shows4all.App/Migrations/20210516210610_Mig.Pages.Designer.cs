@@ -10,8 +10,8 @@ using Shows4all.App.Data.Context;
 namespace Shows4all.App.Migrations
 {
     [DbContext(typeof(Shows4AllDbContext))]
-    [Migration("20210516164815_Mig.Changes to Customer")]
-    partial class MigChangestoCustomer
+    [Migration("20210516210610_Mig.Pages")]
+    partial class MigPages
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

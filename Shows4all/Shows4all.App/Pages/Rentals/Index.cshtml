@@ -26,15 +26,15 @@
     <thead>
         <tr>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@ViewData["DateRentedSort"]" >
+                <a asp-page="./Index" asp-route-sortOrder="@ViewData["DateRentedSort"]">
                     @Html.DisplayNameFor(model => model.Rental[0].DateRented)
-                    </a>
+                </a>
             </th>
             <th>
-                <a asp-page="./Index" asp-route-sortOrder="@ViewData.["SerieSort"]" >
+                <a asp-page="./Index" asp-route-sortOrder="@ViewData.["SerieSort"]">
                     @Html.DisplayNameFor(model => model.Rental[0].Serie)
                 </a>
-</th>
+            </th>
             <th></th>
         </tr>
     </thead>

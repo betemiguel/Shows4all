@@ -29,7 +29,9 @@ namespace Shows4all.App.Pages.ViewSeries
                 return NotFound();
             }
 
-            Serie = await _context.Serie.FirstOrDefaultAsync(m => m.Id == id);
+            Serie = await _context.Serie
+                .Include(s => s.Country)
+                .Include(s => s.Genre).FirstOrDefaultAsync(m => m.Id == id);
 
             if (Serie == null)
             {

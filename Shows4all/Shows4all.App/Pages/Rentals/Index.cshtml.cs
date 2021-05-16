@@ -28,11 +28,11 @@ namespace Shows4all.App.Pages.Rentals
 
         public async Task OnGetAsync(string sortOrder, string searchString)
         {
-            
+
 
             ViewData["SerieSort"] = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewData["DateRentedSort"] = sortOrder == "Date" ? "date_desc" : "Date";
-          
+
             ViewData["CurrentFilter"] = searchString;
 
             IQueryable<Rental> rentalFilter = from s in _context.Rentals
@@ -67,6 +67,7 @@ namespace Shows4all.App.Pages.Rentals
         }
 
 
-       
+
     }
 }
+

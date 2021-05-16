@@ -139,11 +139,18 @@ namespace Shows4all.App.Migrations
                     Comments = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PublishedDAte = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Rating = table.Column<int>(type: "int", nullable: false),
-                    IdSerie = table.Column<int>(type: "int", nullable: false)
+                    IdSerie = table.Column<int>(type: "int", nullable: false),
+                    IdCustomer = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Comments_Customers_IdCustomer",
+                        column: x => x.IdCustomer,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Comments_Serie_IdSerie",
                         column: x => x.IdSerie,
@@ -264,6 +271,11 @@ namespace Shows4all.App.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Comments_IdCustomer",
+                table: "Comments",
+                column: "IdCustomer");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Comments_IdSerie",
