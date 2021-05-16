@@ -7,16 +7,17 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
+using Shows4all.App.Data.Repositories;
 
 namespace Shows4all.App.Pages.User
 {
     public class DeleteModel : PageModel
     {
-        private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
+        private readonly AdminRepository _adminRepository;
 
-        public DeleteModel(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public DeleteModel(AdminRepository adminRepository)
         {
-            _context = context;
+            _adminRepository = adminRepository;
         }
 
         [BindProperty]
@@ -29,7 +30,7 @@ namespace Shows4all.App.Pages.User
                 return NotFound();
             }
 
-            Admin = await _context.Admins.FirstOrDefaultAsync(m => m.Id == id);
+            Admin = await _adminRepository.GetAsync(id.Value);
 
             if (Admin == null)
             {
@@ -40,19 +41,15 @@ namespace Shows4all.App.Pages.User
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
             }
 
-            Admin = await _context.Admins.FindAsync(id);
 
-            if (Admin != null)
-            {
-                _context.Admins.Remove(Admin);
-                await _context.SaveChangesAsync();
-            }
 
+            _ = await _adminRepository.DeleteAdminAsync(id.Value);
             return RedirectToPage("./Index");
         }
     }

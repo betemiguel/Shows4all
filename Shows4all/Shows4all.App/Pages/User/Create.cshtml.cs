@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Shows4all.App.Data.Context;
 using Shows4all.App.Data.Entities;
+using Shows4all.App.Data.Repositories;
 
 namespace Shows4all.App.Pages.User
 {
     public class CreateModel : PageModel
     {
-        private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
+        private readonly AdminRepository _adminRepository;
 
-        public CreateModel(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public CreateModel(AdminRepository adminRepository)
         {
-            _context = context;
+            _adminRepository = adminRepository;
         }
 
         public IActionResult OnGet()
@@ -35,8 +31,8 @@ namespace Shows4all.App.Pages.User
                 return Page();
             }
 
-            _context.Admins.Add(Admin);
-            await _context.SaveChangesAsync();
+            var admin = await _adminRepository.AddAdminAsync(Admin);
+            
 
             return RedirectToPage("./Index");
         }

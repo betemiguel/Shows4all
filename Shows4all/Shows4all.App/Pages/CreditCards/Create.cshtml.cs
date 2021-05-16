@@ -12,9 +12,9 @@ namespace Shows4all.App.Pages.CreditCards
 {
     public class CreateModel : PageModel
     {
-        private readonly Shows4all.App.Data.Context.Shows4AllDbContext _context;
+        private readonly Shows4AllDbContext _context;
 
-        public CreateModel(Shows4all.App.Data.Context.Shows4AllDbContext context)
+        public CreateModel(Shows4AllDbContext context)
         {
             _context = context;
         }
